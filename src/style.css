@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -13,6 +13,17 @@
   font-size: 1.5rem;
 }
 
-.item {
-  
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.microverse-license,
+.our-license {
+  margin: 0 auto;
 }
