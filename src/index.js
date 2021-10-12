@@ -1,7 +1,6 @@
 import './style.css';
 
 const baseURL = 'https://pokeapi.co/api/v2/';
-// const involvementAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 
 const element = document.getElementById('grid-layout');
 
