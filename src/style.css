@@ -27,3 +27,17 @@
 .our-license {
   margin: 0 auto;
 }
+
+main {
+  display: grid;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+#grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5rem;
+  grid-row-gap: 8rem;
+}
