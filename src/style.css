@@ -1,3 +1,29 @@
-.hello {
-  color: red;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  padding-top: 4rem;
+  font-size: 1.5rem;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.microverse-license,
+.our-license {
+  margin: 0 auto;
 }
