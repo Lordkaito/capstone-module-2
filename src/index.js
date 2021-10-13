@@ -1,4 +1,7 @@
 import './style.css';
+import {
+  mainSection, timeOut, showDescription, closeDescription, btn
+} from './popup'
 
 const baseURL = 'https://pokeapi.co/api/v2/';
 
@@ -11,23 +14,23 @@ const fetchPokeman = async (name) => {
   fetchPokemanName.push(data.sprites.front_default, data.name);
   return fetchPokemanName;
 };
-fetchPokeman('ditto');
 
 const createCard = (imagePara) => {
   const html = `
   <img src="${imagePara[0]}" alt="wireframe-image">
-  <p>${imagePara[1]}</p>
+  <p class='name'>${imagePara[1]}</p>
   <i class="far fa-heart"></i>
   <p>5 Likes</p>
   <button>Comments</button>
   `;
   const div = document.createElement('div');
+  div.classList.add('card');
   div.innerHTML = html;
   element.appendChild(div);
 };
 
 const fetchAllPokemonNames = async () => {
-  const result = await fetch(`${baseURL}pokemon?limit=6`);
+  const result = await fetch(`${baseURL}pokemon?limit=9`);
   const data = await result.json();
 
   data.results.forEach(async (pokeman) => {
@@ -36,3 +39,8 @@ const fetchAllPokemonNames = async () => {
   });
 };
 fetchAllPokemonNames();
+timeOut();
+
+export {
+  fetchPokeman, createCard, fetchAllPokemonNames
+}
