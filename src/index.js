@@ -1,11 +1,10 @@
 import './style.css';
-import {
-  mainSection, timeOut, showDescription, closeDescription, btn
-} from './popup.js';
+// eslint-disable-next-line import/no-cycle
+import { timeOut } from './popup.js';
 import apiLikes from './api-likes.js';
 
+// newApp();
 const baseURL = 'https://pokeapi.co/api/v2/';
-
 const element = document.getElementById('grid-layout');
 
 const fetchPokeman = async (name) => {
@@ -22,7 +21,7 @@ const createCard = (imagePara, numberOfLikes) => {
   <p class='name'>${imagePara[1]}</p>
   <i class="far fa-heart"></i>
   <p>${numberOfLikes} Likes</p>
-  <button>Comments</button>
+  <button class='btn'>Comments</button>
   `;
   const div = document.createElement('div');
   div.classList.add('card');
@@ -46,9 +45,10 @@ const fetchAllPokemonNames = async () => {
     createCard(image, likes);
   });
 };
+
 fetchAllPokemonNames();
 timeOut();
 
 export {
-  fetchPokeman, createCard, fetchAllPokemonNames
+  fetchPokeman, createCard, fetchAllPokemonNames, baseURL,
 };
