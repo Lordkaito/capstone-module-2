@@ -1,4 +1,4 @@
-const commentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/yOXNdGvcjzKJL3GdYc8v/';
+const commentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/gggCBSax83rR3Kv2Y5vr/';
 
 const mainSection = document.querySelector('#grid-layout');
 
