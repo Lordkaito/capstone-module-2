@@ -11,6 +11,7 @@ body {
 button {
   cursor: pointer;
 }
+
 #nav {
   display: flex;
   justify-content: center;
@@ -24,13 +25,13 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: fixed; */
   bottom: 0;
   padding: 2rem 0;
   width: 100%;
 }
 
-.microverse-license, .our-license {
+.microverse-license,
+.our-license {
   margin: 0 auto;
 }
 
@@ -76,4 +77,31 @@ main {
 
 .fa-times {
   align-self: flex-end;
+}
+
+.fa-heart {
+  cursor: pointer;
+}
+
+.comment-section {
+  max-width: 100%;
+  max-height: 100%;
+  width: 500px;
+  height: 600px;
+  margin: 1rem;
+  border: 1px solid red;
+  overflow: auto;
+}
+
+.comment {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0.5rem;
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+input {
+  padding: 0.3rem;
+  margin: 0.4rem;
 }
