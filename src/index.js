@@ -1,7 +1,8 @@
 import './style.css';
 import {
   mainSection, timeOut, showDescription, closeDescription, btn
-} from './popup'
+} from './popup.js';
+import apiLikes from './api-likes.js';
 
 const baseURL = 'https://pokeapi.co/api/v2/';
 
@@ -15,12 +16,12 @@ const fetchPokeman = async (name) => {
   return fetchPokemanName;
 };
 
-const createCard = (imagePara) => {
+const createCard = (imagePara, numberOfLikes) => {
   const html = `
   <img src="${imagePara[0]}" alt="wireframe-image">
   <p class='name'>${imagePara[1]}</p>
   <i class="far fa-heart"></i>
-  <p>5 Likes</p>
+  <p>${numberOfLikes} Likes</p>
   <button>Comments</button>
   `;
   const div = document.createElement('div');
@@ -32,10 +33,17 @@ const createCard = (imagePara) => {
 const fetchAllPokemonNames = async () => {
   const result = await fetch(`${baseURL}pokemon?limit=9`);
   const data = await result.json();
-
+  const allLikes = await apiLikes();
   data.results.forEach(async (pokeman) => {
     const image = await fetchPokeman(pokeman.name);
-    createCard(image);
+
+    const particularId = allLikes.find((item) => item.item_id === pokeman.name);
+    let likes = 0;
+    if (particularId) {
+      likes = particularId.likes;
+    }
+
+    createCard(image, likes);
   });
 };
 fetchAllPokemonNames();
@@ -43,4 +51,4 @@ timeOut();
 
 export {
   fetchPokeman, createCard, fetchAllPokemonNames
-}
+};
