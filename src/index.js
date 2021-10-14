@@ -46,8 +46,6 @@ const createCard = (imagePara, numberOfLikes) => {
     });
 
     likes.innerHTML = `${obj.likes} Likes`;
-
-    // return JSON.parse(data);
   });
 
   element.appendChild(div);
