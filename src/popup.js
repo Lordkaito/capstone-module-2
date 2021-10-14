@@ -72,7 +72,7 @@ const showDescription = (e) => {
     const nameValue = document.querySelector('.name-input').value;
 
     const sendToApi = async () => {
-      const response = await fetch(commentAPI`${'comments'}`, {
+      const response = await fetch(`${commentAPI}${'comments'}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
