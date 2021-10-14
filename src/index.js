@@ -1,7 +1,7 @@
 import './style.css';
 // eslint-disable-next-line import/no-cycle
 import { timeOut } from './popup.js';
-import apiLikes from './api-likes.js';
+import { apiLikes, involvemntApi, appId } from './api-likes.js';
 
 // newApp();
 const baseURL = 'https://pokeapi.co/api/v2/';
@@ -19,13 +19,37 @@ const createCard = (imagePara, numberOfLikes) => {
   const html = `
   <img src="${imagePara[0]}" alt="wireframe-image">
   <p class='name'>${imagePara[1]}</p>
-  <i class="far fa-heart"></i>
-  <p>${numberOfLikes} Likes</p>
+  <i class="heart-icon far fa-heart"></i>
+  <p class="likes">${numberOfLikes} Likes</p>
   <button class='btn'>Comments</button>
   `;
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = html;
+
+  const heartIcon = div.querySelector('.heart-icon');
+  heartIcon.addEventListener('click', async () => {
+    await fetch(`${involvemntApi}apps/${appId}/likes/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        item_id: imagePara[2],
+      }),
+    });
+    const likes = div.querySelector('.likes');
+    const pokemonLikes = await apiLikes();
+    const obj = pokemonLikes.find((x) => {
+      if (x.item_id === imagePara[2]) return true;
+      return false;
+    });
+
+    likes.innerHTML = `${obj.likes} Likes`;
+
+    // return JSON.parse(data);
+  });
+
   element.appendChild(div);
 };
 
