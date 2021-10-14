@@ -11,7 +11,7 @@ const fetchPokeman = async (name) => {
   const fetchPokemanName = [];
   const result = await fetch(`${baseURL}pokemon/${name}`);
   const data = await result.json();
-  fetchPokemanName.push(data.sprites.front_default, data.name);
+  fetchPokemanName.push(data.sprites.front_default, data.name, data.id);
   return fetchPokemanName;
 };
 
@@ -36,7 +36,7 @@ const fetchAllPokemonNames = async () => {
   data.results.forEach(async (pokeman) => {
     const image = await fetchPokeman(pokeman.name);
 
-    const particularId = allLikes.find((item) => item.item_id === pokeman.name);
+    const particularId = allLikes.find((item) => item.item_id === image[2]);
     let likes = 0;
     if (particularId) {
       likes = particularId.likes;
