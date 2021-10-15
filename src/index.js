@@ -51,33 +51,23 @@ const createCard = (imagePara, numberOfLikes) => {
   element.appendChild(div);
 };
 
-const itemCalculator = (itemArray) => {
-
-return itemArray.length
-};
-
+const itemCalculator = (itemArray) => itemArray.length;
 
 const fetchAllPokemonNames = async () => {
   const result = await fetch(`${baseURL}pokemon?limit=9`);
-
   const data = await result.json();
   const allLikes = await apiLikes();
-
   const spaceship = document.querySelector('.spaceship');
   spaceship.textContent = `Spacehips (${itemCalculator(data.results)})`;
 
   data.results.forEach(async (pokeman) => {
     const image = await fetchPokeman(pokeman.name);
-
-
     const particularId = allLikes.find((item) => item.item_id === image[2]);
     let likes = 0;
     if (particularId) {
       likes = particularId.likes;
     }
-
     createCard(image, likes);
-    
   });
 };
 
