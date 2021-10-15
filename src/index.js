@@ -60,7 +60,7 @@ const fetchAllPokemonNames = async () => {
   const data = await result.json();
   const allLikes = await apiLikes();
   const spaceship = document.querySelector('.spaceship');
-  spaceship.textContent = `POKEMAN (${itemCalculator(data.results)})`;
+  spaceship.textContent = `POKEMON (${itemCalculator(data.results)})`;
 
   data.results.forEach(async (pokeman) => {
     const image = await fetchPokeman(pokeman.name);
