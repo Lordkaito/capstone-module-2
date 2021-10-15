@@ -2,6 +2,7 @@ import './style.css';
 // eslint-disable-next-line import/no-cycle
 import { timeOut } from './popup.js';
 import { apiLikes, involvemntApi, appId } from './api-likes.js';
+import itemCalculator from './calculate.js';
 
 // newApp();
 const baseURL = 'https://pokeapi.co/api/v2/';
@@ -53,8 +54,6 @@ const createCard = (imagePara, numberOfLikes) => {
 
   element.appendChild(div);
 };
-
-const itemCalculator = (itemArray) => itemArray.length;
 
 const fetchAllPokemonNames = async () => {
   const result = await fetch(`${baseURL}pokemon?limit=9`);

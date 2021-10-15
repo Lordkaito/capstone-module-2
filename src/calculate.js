@@ -1,0 +1,1 @@
+export default (itemArray) => itemArray.length;
