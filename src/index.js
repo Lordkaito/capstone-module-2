@@ -19,9 +19,12 @@ const createCard = (imagePara, numberOfLikes) => {
   const html = `
   <img src="${imagePara[0]}" alt="wireframe-image">
   <p class='name'>${imagePara[1]}</p>
-  <i class="heart-icon far fa-heart"></i>
-  <p class="likes">${numberOfLikes} Likes</p>
+  <div class="likes-div"> 
+    <i class="heart-icon far fa-heart"></i>
+    <p class="likes">${numberOfLikes} Likes</p>
+  </div>
   <button class='btn'>Comments</button>
+  
   `;
   const div = document.createElement('div');
   div.classList.add('card');
@@ -58,7 +61,7 @@ const fetchAllPokemonNames = async () => {
   const data = await result.json();
   const allLikes = await apiLikes();
   const spaceship = document.querySelector('.spaceship');
-  spaceship.textContent = `Spacehips (${itemCalculator(data.results)})`;
+  spaceship.textContent = `POKEMAN (${itemCalculator(data.results)})`;
 
   data.results.forEach(async (pokeman) => {
     const image = await fetchPokeman(pokeman.name);
