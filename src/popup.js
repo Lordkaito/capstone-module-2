@@ -1,3 +1,5 @@
+import { commentCounter } from './util';
+
 const commentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/gggCBSax83rR3Kv2Y5vr/';
 
 const mainSection = document.querySelector('#grid-layout');
@@ -17,8 +19,6 @@ const getComments = async (id, commentSection) => {
   const counterDiv = document.createElement('div');
   counterDiv.className = 'counter';
   parsedData.forEach((comment) => {
-    counter += 1;
-    console.log(elemContainer);
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment');
     const commentName = document.createElement('h3');
@@ -29,7 +29,7 @@ const getComments = async (id, commentSection) => {
     commentDiv.appendChild(commentP);
     commentSection.appendChild(commentDiv);
   });
-  counterDiv.innerText = `${counter} comments`;
+  counterDiv.innerText = `${commentCounter(parsedData)} ${'comments'}`
   elemContainer.appendChild(counterDiv);
 };
 // function to show description
