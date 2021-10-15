@@ -1,4 +1,4 @@
-const commentCounter = require('../src/util.js');
+const commentCounter = require('./util.js');
 
 describe('Tests the comment counter function', () => {
   test('counts how many comments are inside the array', () => {
@@ -18,5 +18,5 @@ describe('Tests the comment counter function', () => {
     expect(commentCounter.commentCounter(['a', 'b', 'c', 2, true, 65, 'd', 'e', 'f', 'g'])).toBe(10);
     expect(commentCounter.commentCounter(['a', 'b', 'c', 2, true, 65, 'd', 'e', 'f', 'g'])).not.toBeNull();
     expect(commentCounter.commentCounter(['a', 'b', 'c', 2, true, 65, 'd', 'e', 'f', 'g'])).not.toBeUndefined();
-  })
+  });
 });

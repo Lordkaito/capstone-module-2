@@ -1,4 +1,4 @@
-import { commentCounter } from './util';
+import { commentCounter } from './util.js';
 
 const commentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/gggCBSax83rR3Kv2Y5vr/';
 
@@ -15,7 +15,6 @@ const getComments = async (id, commentSection) => {
   const data = await response.text();
   const parsedData = JSON.parse(data);
   const elemContainer = document.querySelector('.elem-container');
-  let counter = 0;
   const counterDiv = document.createElement('div');
   counterDiv.className = 'counter';
   parsedData.forEach((comment) => {
@@ -29,7 +28,7 @@ const getComments = async (id, commentSection) => {
     commentDiv.appendChild(commentP);
     commentSection.appendChild(commentDiv);
   });
-  counterDiv.innerText = `${commentCounter(parsedData)} ${'comments'}`
+  counterDiv.innerText = `${commentCounter(parsedData)} ${'comments'}`;
   elemContainer.appendChild(counterDiv);
 };
 // function to show description
