@@ -2,7 +2,7 @@ import './style.css';
 // eslint-disable-next-line import/no-cycle
 import { timeOut } from './popup.js';
 import { apiLikes, involvemntApi, appId } from './api-likes.js';
-// import { itemCalculator } from './calculate.js'
+
 // newApp();
 const baseURL = 'https://pokeapi.co/api/v2/';
 const element = document.getElementById('grid-layout');
