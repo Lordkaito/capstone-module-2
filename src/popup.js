@@ -12,7 +12,13 @@ const getComments = async (id, commentSection) => {
   const response = await fetch(`${commentAPI}${'comments?item_id='}${id}`);
   const data = await response.text();
   const parsedData = JSON.parse(data);
+  const elemContainer = document.querySelector('.elem-container');
+  let counter = 0;
+  const counterDiv = document.createElement('div');
+  counterDiv.className = 'counter';
   parsedData.forEach((comment) => {
+    counter += 1;
+    console.log(elemContainer);
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment');
     const commentName = document.createElement('h3');
@@ -23,6 +29,8 @@ const getComments = async (id, commentSection) => {
     commentDiv.appendChild(commentP);
     commentSection.appendChild(commentDiv);
   });
+  counterDiv.innerText = `${counter} comments`;
+  elemContainer.appendChild(counterDiv);
 };
 // function to show description
 const showDescription = (e) => {
