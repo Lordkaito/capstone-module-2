@@ -6,6 +6,8 @@
 
 body {
   position: relative;
+  background-color: #dad6d1;
+  background-image: linear-gradient(315deg, #e9cca3 0%, #f8dbd2 74%);
 }
 
 button {
@@ -50,6 +52,15 @@ main {
   grid-row-gap: 8rem;
 }
 
+.item a {
+  text-decoration: none;
+  color: #000;
+}
+
+.item a:hover {
+  color: red;
+}
+
 .item-section {
   position: absolute;
   backdrop-filter: blur(5px);
@@ -83,6 +94,10 @@ main {
   cursor: pointer;
 }
 
+.fa-heart:hover {
+  color: red;
+}
+
 .comment-section {
   max-width: 100%;
   max-height: 100%;
@@ -104,4 +119,28 @@ main {
 input {
   padding: 0.3rem;
   margin: 0.4rem;
+}
+
+.btn {
+  padding: 0.4rem;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: black;
+  margin-top: 0.7rem;
+}
+
+.btn:hover {
+  background-color: rgb(13, 231, 202);
+  color: #000;
+}
+
+.name {
+  font-size: 1.4rem;
+}
+
+.likes-div {
+  display: flex;
+  gap: 0.7rem;
+  padding: 0.5rem 0;
 }
