@@ -144,3 +144,17 @@ input {
   gap: 0.7rem;
   padding: 0.5rem 0;
 }
+
+.weight,
+.abilities,
+.height {
+  font-weight: bold;
+  line-height: 1.5rem;
+}
+
+.logo-item {
+  font-size: 3rem;
+  font-family: fantasy;
+  padding: 0.5rem;
+  box-shadow: 3px 3px 5px 5px rgba(200, 100, 100, 0.5);
+}

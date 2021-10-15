@@ -4,7 +4,6 @@ import { timeOut } from './popup.js';
 import { apiLikes, involvemntApi, appId } from './api-likes.js';
 import itemCalculator from './calculate.js';
 
-// newApp();
 const baseURL = 'https://pokeapi.co/api/v2/';
 const element = document.getElementById('grid-layout');
 
@@ -20,12 +19,11 @@ const createCard = (imagePara, numberOfLikes) => {
   const html = `
   <img src="${imagePara[0]}" alt="wireframe-image">
   <p class='name'>${imagePara[1]}</p>
-  <div class="likes-div"> 
+  <div class="likes-div">
     <i class="heart-icon far fa-heart"></i>
     <p class="likes">${numberOfLikes} Likes</p>
   </div>
   <button class='btn'>Comments</button>
-  
   `;
   const div = document.createElement('div');
   div.classList.add('card');

@@ -1,7 +1,6 @@
 import { commentCounter } from './util.js';
 
 const commentAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/gggCBSax83rR3Kv2Y5vr/';
-
 const mainSection = document.querySelector('#grid-layout');
 
 // function to close the description
@@ -9,14 +8,16 @@ const closeDescription = () => {
   const itemSection = document.querySelector('.item-section');
   itemSection.remove();
 };
-
+let parsedData;
+let counterDiv;
 const getComments = async (id, commentSection) => {
   const response = await fetch(`${commentAPI}${'comments?item_id='}${id}`);
   const data = await response.text();
-  const parsedData = JSON.parse(data);
+  parsedData = JSON.parse(data);
   const elemContainer = document.querySelector('.elem-container');
-  const counterDiv = document.createElement('div');
+  counterDiv = document.createElement('div');
   counterDiv.className = 'counter';
+
   parsedData.forEach((comment) => {
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment');
@@ -36,8 +37,8 @@ const showDescription = (e) => {
   // gets the image from API
   const itemImage = document.createElement('img');
   const parentCard = e.target.parentElement;
-  // // create the item section
 
+  // create the item section
   const itemName = document.createElement('h2');
   itemName.innerText = e.target.parentElement.childNodes[3].textContent;
 
@@ -51,6 +52,13 @@ const showDescription = (e) => {
   const elemContainer = document.createElement('div');
   const nameInput = document.createElement('input');
   const commentInput = document.createElement('input');
+  const weight = document.createElement('p');
+  const height = document.createElement('p');
+  const abilities = document.createElement('p');
+
+  weight.classList.add('weight');
+  height.classList.add('height');
+  abilities.classList.add('abilities');
 
   const submitBtn = document.createElement('button');
 
@@ -62,6 +70,9 @@ const showDescription = (e) => {
       .then((data) => {
         itemImage.src = data.sprites.front_default;
         parentCard.id = data.id;
+        weight.innerText = `Weight: ${data.weight}`;
+        height.innerText = `Height: ${data.height}`;
+        abilities.innerText = `Abilities: ${data.abilities[0].ability.name}, ${data.abilities[1].ability.name}`;
         getComments(data.id, commentSection);
       });
   };
@@ -77,6 +88,16 @@ const showDescription = (e) => {
   const sendComment = () => {
     const commentValue = document.querySelector('.comment-input').value;
     const nameValue = document.querySelector('.name-input').value;
+    const commentSection = document.querySelector('.comment-section');
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+    const commentName = document.createElement('h3');
+    const commentP = document.createElement('p');
+    commentName.innerText = nameValue;
+    commentP.innerText = commentValue;
+    commentDiv.appendChild(commentName);
+    commentDiv.appendChild(commentP);
+    commentSection.appendChild(commentDiv);
 
     const sendToApi = async () => {
       const response = await fetch(`${commentAPI}${'comments'}`, {
@@ -95,6 +116,7 @@ const showDescription = (e) => {
     };
     sendToApi();
     clearValues();
+    counterDiv.innerText = `${commentCounter(parsedData) + 1} ${'comments'}`;
   };
 
   submitBtn.addEventListener('click', sendComment);
@@ -103,6 +125,9 @@ const showDescription = (e) => {
   elemContainer.appendChild(closeBtn);
   elemContainer.appendChild(itemName);
   elemContainer.appendChild(itemImage);
+  elemContainer.appendChild(abilities);
+  elemContainer.appendChild(weight);
+  elemContainer.appendChild(height);
 
   commentSection.className = 'comment-section';
   nameInput.className = 'name-input';
